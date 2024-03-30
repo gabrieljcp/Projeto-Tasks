@@ -1,19 +1,20 @@
-import { ApolloProvider } from "@apollo/react-hooks";
-import { ApolloClient, InMemoryCache } from '@apollo/client';
-import Posts from './Posts';
-
-const client = new ApolloClient({
-  uri: "http://site-teste.local/graphql",
-  cache: new InMemoryCache()
-})
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import HomePage from './pages/Homepage';
+import TaskPage from './pages/TaskPage';
+import LoginPage from './pages/LoginPage';
+// Outras importações de páginas...
 
 function App() {
   return (
-    <ApolloProvider client={client}>
-      <div>
-        <Posts />
-      </div>
-    </ApolloProvider>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} exact />
+        <Route path="/tasks" element={<TaskPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        {/* Outras rotas */}
+      </Routes>
+    </Router>
   );
 }
 
