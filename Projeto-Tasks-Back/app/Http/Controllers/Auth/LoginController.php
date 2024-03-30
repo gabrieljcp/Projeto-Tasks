@@ -29,15 +29,14 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function login(Request $request) { 
-        $user = User::where('email', $request->email)->first();
-    
-        if (!$user || !Hash::check($request->password, $user->password)) {
-            return response()->json(['message' => 'Credenciais inválidas'], 401);
+    public function login(Request $request)
+    {
+        $credentials = $request->only(['email', 'password']);
+        if (! $token = auth('api')->attempt($credentials)) {
+            return response()->json(['error' => 'Credenciais inválidas'], 401);
         }
-    
-        $token = $user->createToken('my-app-token')->plainTextToken;
-    
+
         return response()->json(['token' => $token]);
     }
+
 }

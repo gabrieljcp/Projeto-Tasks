@@ -13,7 +13,6 @@ const RegisterPage = () => {
   
     const onButtonClick = async () => {
       try {
-        console.log([email,password, name, password_confirmation])
         const response = await register({ name, email, password, password_confirmation });
         if (response.data) {
           console.log('Registro bem-sucedido:', response.data);

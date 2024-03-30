@@ -1,23 +1,36 @@
 import axios from 'axios';
-import { useNavigate  } from 'react-router-dom';
+import {  Navigate, useNavigate   } from 'react-router-dom';
 
-const API_URL = 'http://localhost:8000/api/'; 
+const API_URL = 'http://localhost:8000/api/';
 
-const fetchWithToken = async (url, options = {}) => {
+export const fetchWithToken = async (url) => {
+  
   const token = localStorage.getItem('token');
-  const headers = new Headers(options.headers || {});
-  const navigate = useNavigate();
-  headers.append('Authorization', `Bearer ${token}`);
+  let response;
+ console.log("AQUI")
+  try {
+    response = await axios.get(url, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      
+    });
+    console.log(response);
 
-  const response = await fetch(url, { ...options, headers });
-
-  if (response.status === 401) {
-    localStorage.removeItem('token');
-    navigate('/login'); 
+  } catch (error) {
+    console.error('Erro ao fazer requisição:', error.response);
+    
+    if (error.response && error.response.status === 401) {
+      localStorage.removeItem('token');
+      // A maneira de lidar com redirecionamento será discutida abaixo.
+      window.location.href = '/login'; // Uma abordagem para redirecionamento.
+    }
   }
 
   return response;
 };
+
+
 
 
 
@@ -30,11 +43,11 @@ export const register = async (userData) => {
 };
 
 export const getAllTasks = async () => {
-  return axios.get(API_URL + 'tasks/all');
+  return fetchWithToken(API_URL + 'tasks/all');
 };
 
 export const getTasks = async (id) => {
-  return axios.get(API_URL + `tasks/get/${id}`);
+  return fetchWithToken(API_URL + `tasks/get/${id}`);
 };
 
 export const createTasks = async (taskData) => {

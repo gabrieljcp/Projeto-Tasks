@@ -20,7 +20,6 @@ const Posts = () => {
 
     if(loading) return <p>Loading Posts...</p>
     if(error) return <p>Error</p>;
-    console.log(error);
 
     return (
         posts.map(({content, date, status, title}, index) =>  {

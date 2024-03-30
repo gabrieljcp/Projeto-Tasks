@@ -40,6 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'api' => [
+            'driver' => 'jwt', // Certifique-se de que o driver está definido como 'jwt'
+            'provider' => 'users',
+        ],
     ],
 
     /*

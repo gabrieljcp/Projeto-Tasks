@@ -8,13 +8,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('jwt.auth')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::post('/loginAPI', [LoginController::class, 'login']);
 Route::post('/registerAPI', [RegisterController::class, 'register']);
 
-Route::middleware(['auth:sanctum'])->group(function () {
+Route::middleware(['jwt.auth'])->group(function () {
 
     Route::get('/tasks/all',  [TasksController::class, 'getAllTasks']);
     Route::get('/tasks/get/{id}',  [TasksController::class, 'getTasks']);

@@ -10,7 +10,6 @@ function App() {
     <Router>
       <Routes>
       <Route path="/" element={<Navigate replace to="/login" />} />
-        {/* <Route path="/tasks" element={<TaskPage />} /> */}
         <Route path="/tasks" element={<PrivateRoute><TaskPage /></PrivateRoute>} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
