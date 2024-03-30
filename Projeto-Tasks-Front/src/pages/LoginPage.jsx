@@ -61,8 +61,19 @@ const LoginPage = (props) => {
                 />
                 {error && <p className="error-message">Credenciais Inválidas</p>}
                 <br />
-                <input type="button" onClick={handleLogin} value="Entrar" />
-                <input type="button" onClick={navigateToRegister} value="Cadastrar" />
+                <button onClick={handleLogin}>
+                    Entrar
+                    <div class="arrow-wrapper">
+                        <div class="arrow"></div>
+                    </div>
+                </button>
+                <br />
+                <button onClick={navigateToRegister}>
+                    Cadastrar
+                    <div class="arrow-wrapper">
+                        <div class="arrow"></div>
+                    </div>
+                </button>
             </div>
         </div>
     );

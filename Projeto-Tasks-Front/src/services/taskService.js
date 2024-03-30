@@ -1,6 +1,25 @@
 import axios from 'axios';
+import { useNavigate  } from 'react-router-dom';
 
-const API_URL = 'http://localhost:8000/api/'; // Ajuste conforme necessário
+const API_URL = 'http://localhost:8000/api/'; 
+
+const fetchWithToken = async (url, options = {}) => {
+  const token = localStorage.getItem('token');
+  const headers = new Headers(options.headers || {});
+  const navigate = useNavigate();
+  headers.append('Authorization', `Bearer ${token}`);
+
+  const response = await fetch(url, { ...options, headers });
+
+  if (response.status === 401) {
+    localStorage.removeItem('token');
+    navigate('/login'); 
+  }
+
+  return response;
+};
+
+
 
 export const login = async (credentials) => {
   return axios.post(API_URL + 'loginAPI', credentials);

@@ -1,113 +1,71 @@
 import React, { useState } from "react";
-import { useNavigate  } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../styles/RegisterPage.css';
-import { login } from "../services/taskService";
+import { register } from "../services/taskService";
 
-const RegisterPage = (props) => {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [emailError, setEmailError] = useState('')
-    const [passwordError, setPasswordError] = useState('')
+const RegisterPage = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [name, setName] = useState('');
+    const [password_confirmation, setPassword_confirmation] = useState('');
 
-    const navigate = useNavigate()
-
-    const onButtonClick = () => {
-        // You'll update this function later...
-    }
+    const navigate = useNavigate();
   
-    const handleLogin = async (e) => {
-      e.preventDefault();
+    const onButtonClick = async () => {
       try {
-        const response = await fetch(login, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ email, password }),
-        });
-        if (response.ok) {
-          const data = await response.json();
-          console.log('Login bem-sucedido:', data);
-          // Redirecionar para a página principal após o login
-          navigate.push('/home');
+        console.log([email,password, name, password_confirmation])
+        const response = await register({ name, email, password, password_confirmation });
+        if (response.data) {
+          console.log('Registro bem-sucedido:', response.data);
+          navigate('/tasks');
         } else {
-          console.error('Falha no login');
+          console.error('Falha no registro');
         }
       } catch (error) {
-        console.error('Erro ao fazer login:', error);
+        console.error('Erro ao fazer registro:', error);
       }
     };
   
-    const navigateToRegister = () => {
-      // Redirecionar para a tela de cadastro
-      navigate('/register');
-    };
-  
     return (
-        <div class="container" onclick="handleClick()">
-            <div class="top"></div>
-            <div class="bottom"></div>
-            <div class="center">
-                <h2>Crie seu cadastro</h2>
-                <input type="text" placeholder="Nome"></input>
-                <input type="email" placeholder="Email"></input>
-                <input type="password" placeholder="Senha"></input>
+        <div className="container">
+            <div className="top"></div>
+            <div className="bottom"></div>
+            <div className="center">
+                <h2>Faça seu cadastro</h2>
+                <input 
+                    type="text"     
+                    placeholder="Nome"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)} 
+                />
+                <input 
+                    type="email"     
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)} 
+                />
+                <input 
+                    type="password"     
+                    placeholder="Senha"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)} 
+                />
+                <input 
+                    type="password"     
+                    placeholder="Confirme sua senha"
+                    value={password_confirmation}
+                    onChange={(e) => setPassword_confirmation(e.target.value)} 
+                />
                 <br />
-                <input type="button" onClick={onButtonClick} value={'Criar'} />
+                <button onClick={onButtonClick}>
+                    Cadastrar
+                    <div class="arrow-wrapper">
+                        <div class="arrow"></div>
+                    </div>
+                </button>
             </div>
         </div>
-
-        // <div className={'container'}>
-        //     <div className={'titleContainer'}>
-        //         <p>Login</p>
-        //     </div>
-        //     <br />
-        //     <div className={'inputContainer'}>
-        //         <input
-        //         value={email}
-        //         placeholder="Enter your email here"
-        //         onChange={(ev) => setEmail(ev.target.value)}
-        //         className={'inputBox'}
-        //         />
-        //         <label className="errorLabel">{emailError}</label>
-        //     </div>
-        //     <br />
-        //     <div className={'inputContainer'}>
-        //         <input
-        //         value={password}
-        //         placeholder="Enter your password here"
-        //         onChange={(ev) => setPassword(ev.target.value)}
-        //         className={'inputBox'}
-        //         />
-        //         <label className="errorLabel">{passwordError}</label>
-        //     </div>
-        //     <br />
-        //     <div className={'inputContainer'}>
-        //         <input className={'inputButton'} type="button" onClick={onButtonClick} value={'Log in'} />
-        //     </div>
-        // </div>
-    //   <div className="login-container">
-    //     <div className="login-card">
-    //       <h1>Login</h1>
-    //       <form onSubmit={handleLogin}>
-    //         <input
-    //           type="email"
-    //           placeholder="E-mail"
-    //           value={email}
-    //           onChange={(e) => setEmail(e.target.value)}
-    //         />
-    //         <input
-    //           type="password"
-    //           placeholder="Senha"
-    //           value={password}
-    //           onChange={(e) => setPassword(e.target.value)}
-    //         />
-    //         <button type="submit">Entrar</button>
-    //       </form>
-    //       <button onClick={navigateToRegister}>Cadastrar</button>
-    //     </div>
-    //   </div>
     );
-  };
+};
   
-  export default RegisterPage;
+export default RegisterPage;

@@ -6,30 +6,30 @@ const TaskPage = (props) => {
     const navigate = useNavigate()
   
     return (
-        <div class="container">
+        <div className="container">
             <h1>Suas Tarefas</h1>
             <br />
-            <div class="cards">
-                <div class="card">
-                    <div class="card-details">
-                        <p class="text-title">Card title</p>
-                        <p class="text-body">Here are the details of the card</p>
+            <div className="cards">
+                <div className="card">
+                    <div className="card-details">
+                        <p className="text-title">Card title</p>
+                        <p className="text-body">Here are the details of the card</p>
                     </div>
-                    <button class="card-button">More info</button>
+                    <button className="card-button">More info</button>
                 </div>
-                <div class="card">
-                    <div class="card-details">
-                        <p class="text-title">Card title</p>
-                        <p class="text-body">Here are the details of the card</p>
+                <div className="card">
+                    <div className="card-details">
+                        <p className="text-title">Card title</p>
+                        <p className="text-body">Here are the details of the card</p>
                     </div>
-                    <button class="card-button">More info</button>
+                    <button className="card-button">More info</button>
                 </div>
-                <div class="card">
-                    <div class="card-details">
-                        <p class="text-title">Card title</p>
-                        <p class="text-body">Here are the details of the card</p>
+                <div className="card">
+                    <div className="card-details">
+                        <p className="text-title">Card title</p>
+                        <p className="text-body">Here are the details of the card</p>
                     </div>
-                    <button class="card-button">More info</button>
+                    <button className="card-button">More info</button>
                 </div>
             </div>    
         </div>
