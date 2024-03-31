@@ -5,67 +5,52 @@ import { getAllTasks, fetchWithToken } from "../services/taskService";
 import LoadingIndicator from '../components/LoadingIndicator';
 
 const TaskPage = (props) => {
-    const navigate = useNavigate()
-    const [isLoading, setIsLoading] = useState(false);
+  const [tasks, setTasks] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
     useEffect(() => {
         const fetchData = async () => {
           setIsLoading(true);
             
           try {
-            const fetchData = async () => {
-                const response = await fetch(getAllTasks, { 
-                  method: 'GET',
-                });
-                console.log("ABABA".response)    
-            if (response.status === 401) {
-              navigate('/login');
-              return;
-            }
-            const data = await response.json();
-            console.log(data)
-          } 
+                const response = await getAllTasks();
+                setTasks(response.data);
           } catch (error) {
-            console.error('Erro ao buscar tarefas:', error);
+            setError(error);
+            if (error.response && error.response.status === 401) {
+              navigate('/login');
+            }
           } finally {
             setIsLoading(false);
           }
         };
         fetchData();
       }, []);
+
+      if (isLoading) return <LoadingIndicator />;
       
-
-    return (
+      return (
         <div className="container">
-            
-            
-            <h1>Suas Tarefas</h1>
-            <br />
-            <div className="cards">
-                <div className="card">
-                    <div className="card-details">
-                        <p className="text-title">Card title</p>
-                        <p className="text-body">Here are the details of the card</p>
-                    </div>
-                    <button className="card-button">More info</button>
+          <header className="box-title">
+            <h1 className="the-title"><b>Suas tarefas</b></h1>
+          </header>
+          <br />
+          <div className="cards">
+            {tasks.map((task) => (
+              <div key={task.id} className="card">
+                <div className="card-details">
+                  <p className="text-title">{task.title}</p>
+                  <p className="text-body">{task.description}</p> 
+                  <p className="text-body">Status: {task.status}</p> 
                 </div>
-                <div className="card">
-                    <div className="card-details">
-                        <p className="text-title">Card title</p>
-                        <p className="text-body">Here are the details of the card</p>
-                    </div>
-                    <button className="card-button">More info</button>
-                </div>
-                <div className="card">
-                    <div className="card-details">
-                        <p className="text-title">Card title</p>
-                        <p className="text-body">Here are the details of the card</p>
-                    </div>
-                    <button className="card-button">More info</button>
-                </div>
-            </div>    
+                <button className="card-button">Mais informações</button>
+              </div>
+            ))}
+          </div>    
         </div>
-    );
-  };
-
-export default TaskPage;
+      );
+    };
+    
+    export default TaskPage;

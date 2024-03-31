@@ -1,9 +1,10 @@
 .container {
     display: flex;
-    justify-content: center; /* Alinha horizontalmente ao centro */
-    align-items: center; /* Alinha verticalmente ao centro */
-    min-height: 100vh; /* Altura mínima de 100% da altura da tela */
-    flex-direction: column; /* Organiza os itens em coluna */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; 
+    flex-direction: column;
+    background-color: rgba(126, 113, 113, 0.114); 
   }
   
 .card {
@@ -18,6 +19,8 @@
     transition: 0.5s ease-out;
     overflow: visible;
     place-content: center;
+    border-color: #008bf8;
+    box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
    }
 
    .cards {
@@ -62,12 +65,85 @@
    }
    
    /*Hover*/
-   .card:hover {
+   /* .card:hover {
     border-color: #008bf8;
     box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
-   }
+   } */
    
-   .card:hover .card-button {
+   /* .card:hover .card-button {
+    transform: translate(-50%, 50%);
+    opacity: 1;
+   } */
+   .card .card-button {
     transform: translate(-50%, 50%);
     opacity: 1;
    }
+
+   .the-title {
+  
+    position: relative;
+    padding: 0;
+    margin: 0;
+    font-family: "Raleway", sans-serif;
+    font-weight: 300;
+    font-size: 40px;
+    color: #080808;
+    -webkit-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+  }
+  
+  .the-title b { 
+  
+      font-family:'open_sansbold'; 
+      font-weight:bold;
+      color:#008bf8;
+  
+  }
+  
+  .box-title h1 {
+  
+      font-size:70px;
+      text-align:center; 
+      line-height:1.5em; 
+      padding-bottom:45px; 
+      font-family:'open_sansregular'; 
+      letter-spacing: 2px; 
+      color:#111;
+  
+  }
+  
+  .box-title h1:before {
+   
+    position: absolute;
+    left: 0;
+    bottom: 20px;
+    width: 30%;
+    left:50%; 
+    margin-left:-15%;
+    height: 1px;
+    content: "";
+    background-color: #777; 
+    z-index: 4;
+  
+  }
+  
+  .box-title h1:after {
+  
+    position:absolute;
+    width:5px; 
+    height:40px; 
+    left:50%; 
+    margin-left:-20px; 
+    bottom:0px;
+    font-family: "untitled-font-1";
+    content: '\e612'; 
+    font-size:30px; 
+    line-height:40px; 
+    color:#008bf8;
+    font-weight:400; 
+    z-index: 5;
+    display:block;
+    background-color:#ffffff;
+  
+  }

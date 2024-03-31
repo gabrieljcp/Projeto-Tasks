@@ -1,37 +1,33 @@
 import axios from 'axios';
-import {  Navigate, useNavigate   } from 'react-router-dom';
 
 const API_URL = 'http://localhost:8000/api/';
 
-export const fetchWithToken = async (url) => {
+// export const fetchWithToken = async (url, navigate = null) => {
+//   console.log("Realizando requisição para:", url);
+//   const token = localStorage.getItem('token');
+
+//   if (!token) {
+//     console.log("Token não encontrado. Redirecionando para login...");
+//     navigate ? navigate('/login') : window.location.href = '/login';
+//     return;
+//   }
   
-  const token = localStorage.getItem('token');
-  let response;
- console.log("AQUI")
-  try {
-    response = await axios.get(url, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      
-    });
-    console.log(response);
-
-  } catch (error) {
-    console.error('Erro ao fazer requisição:', error.response);
+//   try {
+//     response = await axios.get(url, {
+//       headers: { Authorization: `Bearer ${token}` },
+//     });
+//     console.log(response);
+//     return response;
+//   } catch (error) {
+//     console.error('Erro ao fazer requisição:', error.response);
     
-    if (error.response && error.response.status === 401) {
-      localStorage.removeItem('token');
-      // A maneira de lidar com redirecionamento será discutida abaixo.
-      window.location.href = '/login'; // Uma abordagem para redirecionamento.
-    }
-  }
-
-  return response;
-};
-
-
-
+//     if (error.response && error.response.status === 401) {
+//       localStorage.removeItem('token');
+//       navigate ? navigate('/login') : window.location.href = '/login';
+//       throw error;
+//     }
+//   }
+// };
 
 
 export const login = async (credentials) => {
@@ -43,21 +39,36 @@ export const register = async (userData) => {
 };
 
 export const getAllTasks = async () => {
-  return fetchWithToken(API_URL + 'tasks/all');
+  const token = localStorage.getItem('token');
+  return axios.get(API_URL + 'tasks/all', {
+    headers: { Authorization: `Bearer ${token}` },
+  });
 };
 
 export const getTasks = async (id) => {
-  return fetchWithToken(API_URL + `tasks/get/${id}`);
+  const token = localStorage.getItem('token');
+  return axios.get(API_URL + `tasks/get/${id}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
 };
 
 export const createTasks = async (taskData) => {
-  return axios.post(API_URL + 'tasks/add', taskData);
+  const token = localStorage.getItem('token');
+  return axios.post(API_URL + 'tasks/add', taskData, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
 };
 
 export const deleteTasks = async (id) => {
-  return axios.delete(API_URL + `tasks/delete/${id}`);
+  const token = localStorage.getItem('token');
+  return axios.delete(API_URL + `tasks/delete/${id}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
 };
 
 export const updateTasks = async (id, taskData) => {
-  return axios.put(API_URL + `tasks/update/${id}`, taskData);
+  const token = localStorage.getItem('token');
+  return axios.put(API_URL + `tasks/update/${id}`, taskData, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
 };
