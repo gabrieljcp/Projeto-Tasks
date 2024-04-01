@@ -2,34 +2,6 @@ import axios from 'axios';
 
 const API_URL = 'http://localhost:8000/api/';
 
-// export const fetchWithToken = async (url, navigate = null) => {
-//   console.log("Realizando requisição para:", url);
-//   const token = localStorage.getItem('token');
-
-//   if (!token) {
-//     console.log("Token não encontrado. Redirecionando para login...");
-//     navigate ? navigate('/login') : window.location.href = '/login';
-//     return;
-//   }
-  
-//   try {
-//     response = await axios.get(url, {
-//       headers: { Authorization: `Bearer ${token}` },
-//     });
-//     console.log(response);
-//     return response;
-//   } catch (error) {
-//     console.error('Erro ao fazer requisição:', error.response);
-    
-//     if (error.response && error.response.status === 401) {
-//       localStorage.removeItem('token');
-//       navigate ? navigate('/login') : window.location.href = '/login';
-//       throw error;
-//     }
-//   }
-// };
-
-
 export const login = async (credentials) => {
   return axios.post(API_URL + 'loginAPI', credentials);
 };

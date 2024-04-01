@@ -3,6 +3,7 @@ import { useNavigate  } from 'react-router-dom';
 import '../styles/LoginPage.css';
 import { login } from "../services/taskService";
 import LoadingIndicator from '../components/LoadingIndicator';
+import { useAuth } from "../contexts/AuthContext";
 
 const LoginPage = (props) => {
     const [email, setEmail] = useState('');
@@ -10,22 +11,20 @@ const LoginPage = (props) => {
     const [error, setError] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
+    const auth = useAuth();
 
     const handleLogin = async (e) => {
       e.preventDefault();
       setIsLoading(true);
       try {
-        const response = await login({ email, password });
-        if (response.data && response.data.token) {
-            console.log('Login bem-sucedido:', response.data.token);
-            localStorage.setItem('token', response.data.token);
+        const response = await auth.handleLogin({ email, password });
+        if (response && response.token) {
+            localStorage.setItem('token', response.token);
             navigate('/tasks');
         } else {
-          console.error('Falha no login');
           setError(true);
         }
       } catch (error) {
-        console.error('Erro ao fazer login:', error);
         setError(true);
       } finally {
         setIsLoading(false);
@@ -41,6 +40,7 @@ const LoginPage = (props) => {
     }
 
     return (
+      <div className="loginPage">
         <div className="container">
             <div className="top"></div>
             <div className="bottom"></div>
@@ -76,6 +76,7 @@ const LoginPage = (props) => {
                 </button>
             </div>
         </div>
+      </div>
     );
 };
   

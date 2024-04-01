@@ -1,56 +1,68 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate  } from 'react-router-dom';
 import '../styles/TaskPage.css';
-import { getAllTasks, fetchWithToken } from "../services/taskService";
+import { getAllTasks, updateTasks} from "../services/taskService";
 import LoadingIndicator from '../components/LoadingIndicator';
+import Card from "../components/TasksCard";
+import AddCard from "../components/AddCard";
+import Header from "../components/Header";
 
 const TaskPage = (props) => {
   const [tasks, setTasks] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [activeTaskId, setActiveTaskId] = useState('');
   const [error, setError] = useState(null);
+  const [editingTask, setEditingTask] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
 
-    useEffect(() => {
-        const fetchData = async () => {
-          setIsLoading(true);
-            
-          try {
-                const response = await getAllTasks();
-                setTasks(response.data);
-          } catch (error) {
-            setError(error);
-            if (error.response && error.response.status === 401) {
-              navigate('/login');
-            }
-          } finally {
-            setIsLoading(false);
+  useEffect(() => {
+      const fetchData = async () => {
+        setIsLoading(true);
+          
+        try {
+              const response = await getAllTasks();
+              setTasks(response.data);
+        } catch (error) {
+          setError(error);
+          if (error.response && error.response.status === 401) {
+            navigate('/login');
           }
-        };
-        fetchData();
-      }, []);
+        } finally {
+          setIsLoading(false);
+        }
+      };
+      fetchData();
+    }, []);
 
-      if (isLoading) return <LoadingIndicator />;
+    if (isLoading) return <LoadingIndicator />;
+
+    if (error && error.response && error.response.status !== 401) {
+      return <p>Ocorreu um erro ao buscar as tarefas. Tente novamente mais tarde.</p>;
+    }
       
-      return (
-        <div className="container">
-          <header className="box-title">
-            <h1 className="the-title"><b>Suas tarefas</b></h1>
-          </header>
-          <br />
-          <div className="cards">
-            {tasks.map((task) => (
-              <div key={task.id} className="card">
-                <div className="card-details">
-                  <p className="text-title">{task.title}</p>
-                  <p className="text-body">{task.description}</p> 
-                  <p className="text-body">Status: {task.status}</p> 
-                </div>
-                <button className="card-button">Mais informações</button>
-              </div>
-            ))}
-          </div>    
-        </div>
-      );
+    const handleShowMore = (currentTask) => {
+      setActiveTaskId(currentTask);
     };
+    
+  return (
+    <div className="taskpage">
+      <Header />
+      <div className="container">
+        <div className="cards">
+            <AddCard /> 
+          {tasks.map((task) => (              
+            <Card 
+              key={task.id} 
+              task={task}
+              handleShowMore={handleShowMore}
+              currentTask={activeTaskId}
+            />  
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
     
     export default TaskPage;

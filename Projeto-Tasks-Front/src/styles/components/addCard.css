@@ -1,0 +1,10 @@
+.addIcon {
+    text-align: center;
+    color: #bfbfbf;
+    width: 100%;
+    cursor: pointer;
+}
+
+.addIcon::before {
+    font-size: 160px;
+}

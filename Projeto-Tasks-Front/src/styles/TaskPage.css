@@ -1,149 +1,151 @@
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; 
-    flex-direction: column;
-    background-color: rgba(126, 113, 113, 0.114); 
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #e3e1e1;
+}
+
 .card {
-    width: 300px;
-    display: inline-block;
-    height: 254px;
-    border-radius: 20px;
-    background: #f5f5f5;
-    position: relative;
-    padding: 1.8rem;
-    border: 2px solid #c3c6ce;
-    transition: 0.5s ease-out;
-    overflow: visible;
-    place-content: center;
+  width: 300px;
+  display: inline-block;
+  height: 254px;
+  border-radius: 20px;
+  background: #f5f5f5;
+  position: relative;
+  padding: 16px 24px;
+  border: 2px solid #f5f5f5;
+  transition: 0.5s ease-out;
+  overflow: visible;
+  place-content: center;
+  box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+}
+
+.card-active {
+  border-color: #008bf8;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  width: min(1024px, 100%);
+}
+
+.card-details {
+  color: black;
+  height: 100%;
+  display: grid;
+  align-items: center;
+}
+
+.card-button {
+  transform: translate(-50%, 125%);
+  border-radius: 1rem;
+  border: none;
+  background-color: #008bf8;
+  color: #fff;
+  font-size: 0.8rem;
+  padding: 8px 16px;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transition: 0.3s ease-out;
+}
+
+.text-body {
+  color: rgb(134, 134, 134);
+}
+
+/*Text*/
+.text-title {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+/*Hover*/
+/* .card:hover {
     border-color: #008bf8;
     box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
-   }
-
-   .cards {
-    display: flex;
-    flex-wrap: wrap; /* Permite que os cards se alinhem corretamente ao redimensionar a tela */
-    gap: 20px; /* Espaço entre os cards */
-    justify-content: center; /* Centraliza os cards na linha */
-   }
-   
-   .card-details {
-    color: black;
-    height: 100%;
-    gap: .5em;
-    display: grid;
-    place-content: center;
-   }
-   
-   .card-button {
-    transform: translate(-50%, 125%);
-    width: 60%;
-    border-radius: 1rem;
-    border: none;
-    background-color: #008bf8;
-    color: #fff;
-    font-size: 1rem;
-    padding: .5rem 1rem;
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    opacity: 0;
-    transition: 0.3s ease-out;
-   }
-   
-   .text-body {
-    color: rgb(134, 134, 134);
-   }
-   
-   /*Text*/
-   .text-title {
-    font-size: 1.5em;
-    font-weight: bold;
-   }
-   
-   /*Hover*/
-   /* .card:hover {
-    border-color: #008bf8;
-    box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
-   } */
-   
-   /* .card:hover .card-button {
+   } 
+    */
+/* .card:hover .card-button {
     transform: translate(-50%, 50%);
     opacity: 1;
-   } */
-   .card .card-button {
-    transform: translate(-50%, 50%);
-    opacity: 1;
-   }
+   }  */
 
-   .the-title {
-  
-    position: relative;
-    padding: 0;
-    margin: 0;
-    font-family: "Raleway", sans-serif;
-    font-weight: 300;
-    font-size: 40px;
-    color: #080808;
-    -webkit-transition: all 0.4s ease 0s;
-    -o-transition: all 0.4s ease 0s;
-    transition: all 0.4s ease 0s;
-  }
-  
-  .the-title b { 
-  
-      font-family:'open_sansbold'; 
-      font-weight:bold;
-      color:#008bf8;
-  
-  }
-  
-  .box-title h1 {
-  
-      font-size:70px;
-      text-align:center; 
-      line-height:1.5em; 
-      padding-bottom:45px; 
-      font-family:'open_sansregular'; 
-      letter-spacing: 2px; 
-      color:#111;
-  
-  }
-  
-  .box-title h1:before {
-   
-    position: absolute;
-    left: 0;
-    bottom: 20px;
-    width: 30%;
-    left:50%; 
-    margin-left:-15%;
-    height: 1px;
-    content: "";
-    background-color: #777; 
-    z-index: 4;
-  
-  }
-  
-  .box-title h1:after {
-  
-    position:absolute;
-    width:5px; 
-    height:40px; 
-    left:50%; 
-    margin-left:-20px; 
-    bottom:0px;
-    font-family: "untitled-font-1";
-    content: '\e612'; 
-    font-size:30px; 
-    line-height:40px; 
-    color:#008bf8;
-    font-weight:400; 
-    z-index: 5;
-    display:block;
-    background-color:#ffffff;
-  
-  }
+.card .card-button {
+  transform: translate(-50%, 50%);
+  opacity: 1;
+}
+
+.the-title {
+
+  position: relative;
+  padding: 0;
+  margin: 0;
+  font-family: "Raleway", sans-serif;
+  font-weight: 300;
+  font-size: 40px;
+  color: #080808;
+  -webkit-transition: all 0.4s ease 0s;
+  -o-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+
+.button-group {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.delete-button,
+.edit-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.delete-button i,
+.edit-button i {
+  font-size: 16px;
+  color: #080808;
+}
+
+.delete-button:hover,
+.edit-button:hover {
+  opacity: 0.3;
+  background: none;
+}
+
+.taskpage {
+  background-color: #e3e1e1;
+}
+
+.taskpage button {
+  padding: 0;
+}
+
+.editTask {
+  display: flex;
+  justify-content: end;
+  gap: 8px;
+}
+
+.editTask button {
+  padding: 8px 16px;
+  background-color: #868686;
+}
+
+.editTask .saveButton {
+  background-color: #008bf8;
+  /* #60b8d4 */
+}
+
+.taskpage input {
+  width: 100%;
+  margin: 0px;
+  padding: 8px;
+}
+

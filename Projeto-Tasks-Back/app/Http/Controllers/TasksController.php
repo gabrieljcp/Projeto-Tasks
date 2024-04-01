@@ -20,6 +20,7 @@ class TasksController extends Controller
         $task->title = $request->title;
         $task->description = $request->description;
         $task->status = $request->status;
+        $task->criadopor = $request->criadopor;
         $task->save();
 
         return response()->json([
