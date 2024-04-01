@@ -26,44 +26,46 @@ const RegisterPage = () => {
     };
   
     return (
-        <div className="container">
-            <div className="top"></div>
-            <div className="bottom"></div>
-            <div className="center">
-                <h2>Faça seu cadastro</h2>
-                <input 
-                    type="text"     
-                    placeholder="Nome"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)} 
-                />
-                <input 
-                    type="email"     
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)} 
-                />
-                <input 
-                    type="password"     
-                    placeholder="Senha"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)} 
-                />
-                <input 
-                    type="password"     
-                    placeholder="Confirme sua senha"
-                    value={password_confirmation}
-                    onChange={(e) => setPassword_confirmation(e.target.value)} 
-                />
-                <br />
-                <button onClick={onButtonClick}>
-                    Cadastrar
-                    <div class="arrow-wrapper">
-                        <div class="arrow"></div>
-                    </div>
-                </button>
-            </div>
-        </div>
+        <div className="registerPage">
+          <div className="container">
+              <div className="top"></div>
+              <div className="bottom"></div>
+              <div className="center">
+                  <h2>Faça seu cadastro</h2>
+                  <input 
+                      type="text"     
+                      placeholder="Nome"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)} 
+                  />
+                  <input 
+                      type="email"     
+                      placeholder="Email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)} 
+                  />
+                  <input 
+                      type="password"     
+                      placeholder="Senha"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)} 
+                  />
+                  <input 
+                      type="password"     
+                      placeholder="Confirme sua senha"
+                      value={password_confirmation}
+                      onChange={(e) => setPassword_confirmation(e.target.value)} 
+                  />
+                  <br />
+                  <button onClick={onButtonClick}>
+                      Cadastrar
+                      <div class="arrow-wrapper">
+                          <div class="arrow"></div>
+                      </div>
+                  </button>
+              </div>
+          </div>
+       </div>
     );
 };
   
