@@ -61,7 +61,6 @@ Descrição breve do sistema, incluindo o propósito, funcionalidades principais
    ```bash
    npm install
    ou
-   ```bash
    yarn install
      
 3. **Configurar o ambiente:**
@@ -71,7 +70,6 @@ Descrição breve do sistema, incluindo o propósito, funcionalidades principais
    ```bash
    npm start
    ou
-   ```bash
    yarn start
 
 ### Uso
