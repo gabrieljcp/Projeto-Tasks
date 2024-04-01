@@ -11,8 +11,7 @@ const AddCard = () => {
     const createTask = async () => {
         const task = {...newValues};
         task.criadopor = auth.user;
-        console.log(task);
-
+        
         try {
             const response = await createTasks(task);
             window.location.reload();
