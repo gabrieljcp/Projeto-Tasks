@@ -38,7 +38,6 @@ Descrição breve do sistema, incluindo o propósito, funcionalidades principais
    composer install
 
 3. **Configurar o ambiente:**
-   ```bash
    Copie `env.example` para `.env` e ajuste as variáveis de ambiente
    ```bash
    cp .env.example .env
@@ -61,9 +60,7 @@ Descrição breve do sistema, incluindo o propósito, funcionalidades principais
 2. **Instalar dependências**
    ```bash
    npm install
-   
    ou
-
    ```bash
    yarn install
      
@@ -73,9 +70,7 @@ Descrição breve do sistema, incluindo o propósito, funcionalidades principais
 4. **Iniciar o servidor de desenvolvimento:**
    ```bash
    npm start
-   
    ou
-
    ```bash
    yarn start
 
