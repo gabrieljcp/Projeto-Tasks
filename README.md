@@ -61,7 +61,10 @@ Descrição breve do sistema, incluindo o propósito, funcionalidades principais
 2. **Instalar dependências**
    ```bash
    npm install
+   
    ou
+
+   ```bash
    yarn install
      
 3. **Configurar o ambiente:**
@@ -70,18 +73,38 @@ Descrição breve do sistema, incluindo o propósito, funcionalidades principais
 4. **Iniciar o servidor de desenvolvimento:**
    ```bash
    npm start
+   
    ou
+
+   ```bash
    yarn start
 
 ### Uso
+Este sistema foi desenvolvido para fornecer uma solução abrangente, integrando funcionalidades backend robustas com uma experiência de usuário fluida no frontend. A seguir, descrevemos como interagir com nossos principais endpoints e componentes React.Descrição dos principais endpoints, incluindo métodos HTTP, parâmetros esperados e formatos de resposta.
+
 **Endpoints do Backend**
-Descrição dos principais endpoints, incluindo métodos HTTP, parâmetros esperados e formatos de resposta.
+Nossa API fornece uma série de endpoints que facilitam a gestão de tarefas, autenticação de usuários e mais. Veja abaixo uma visão geral:
+
+GET /api/tasks: Retorna uma lista de todas as tarefas. Não requer parâmetros.
+POST /api/tasks: Cria uma nova tarefa. Requer um corpo de requisição com title e description.
+PUT /api/tasks/{id}: Atualiza a tarefa especificada pelo ID. Requer title e description no corpo da requisição.
+DELETE /api/tasks/{id}: Exclui a tarefa especificada pelo ID.Este sistema foi desenvolvido para fornecer uma solução abrangente, integrando funcionalidades backend robustas com uma experiência de usuário fluida no frontend. A seguir, descrevemos como interagir com nossos principais endpoints e componentes React.Descrição dos principais endpoints, incluindo métodos HTTP, parâmetros esperados e formatos de resposta.
+
+As respostas são tipicamente retornadas em formato JSON, incluindo detalhes como o código de status HTTP e, para requisições bem-sucedidas, os dados solicitados ou uma mensagem de sucesso.
 
 ### Componentes do Frontend
-**Descrição dos principais componentes React e como eles interagem com o backend.**
+No frontend, utilizamos React para construir componentes interativos que se comunicam com o backend:
+
+TaskList: Exibe uma lista de tarefas, buscando dados diretamente do endpoint /api/tasks.
+TaskForm: Permite ao usuário criar ou editar tarefas, interagindo com os endpoints /api/tasks para criação e /api/tasks/{id} para atualização.
 
 ### Exemplos
-**Inclua exemplos de como usar os endpoints do backend e/ou componentes do frontend.**
+Para adicionar uma nova tarefa utilizando nosso frontend:
+
+Navegue até a tela inicial e clique no primeiro card, onde tem o item de adicionar.
+Preencha os campos Título, Descrição e Status.
+Clique em Criar para enviar a tarefa para o backend.
+No backend, para buscar todas as tarefas disponíveis, faça uma requisição GET para /api/tasks.
 
 ### Suporte
-**Inclua exemplos de como usar os endpoints do backend e/ou componentes do frontend.**
+Se você encontrar dificuldades ou tiver perguntas sobre como utilizar nossos endpoints ou componentes, não hesite em entrar em contato. Auxilio em todas as etapas de integração e uso do sistema.
