@@ -51,8 +51,9 @@ const Card = ({ task, onTaskUpdate, handleShowMore, currentTask }) => {
     setIsLoading(true);
     try {
       await updateTasks(task.id, editValues);
-      onTaskUpdate(); // Callback to refresh the task list in the parent component
-      toggleEdit(); // Exit editing mode
+      window.location.reload();
+      onTaskUpdate(); 
+      toggleEdit(); 
     } catch (error) {
       setError(error.message || 'An error occurred');
     } finally {

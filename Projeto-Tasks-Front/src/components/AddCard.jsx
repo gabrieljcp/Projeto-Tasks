@@ -37,9 +37,14 @@ const AddCard = () => {
             <div className="card-details">
                 {isEditing ? (
                     <>
-                    <input className="text-title" name="title" value={newValues.title} onChange={handleChange} />
-                    <textarea className="text-body" name="description" value={newValues.description} onChange={handleChange} />
-                    <input className="text-body" name="status" value={newValues.status} onChange={handleChange} />
+                    <input className="text-title" name="title" placeholder="Título" value={newValues.title} onChange={handleChange} />
+                    <textarea className="text-body" name="description" placeholder="Descrição"  value={newValues.description} onChange={handleChange} />
+                    <select name="status" id="cars" className="text-body" value={newValues.status} onChange={handleChange}>
+                        <option >Status</option>
+                        <option value="Pendente">Pendente</option>
+                        <option value="Concluída">Concluída</option>
+                        <option value="Cancelada">Cancelada</option>
+                    </select>
                     <div className="editTask">
                         <button onClick={() => setIsEditing(false)}>Cancelar</button>
                     <button className="saveButton" onClick={createTask}>Criar</button>
