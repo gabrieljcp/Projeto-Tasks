@@ -15,7 +15,7 @@
 
 ## Introdução
 
-Descrição breve do sistema, incluindo o propósito, funcionalidades principais e público-alvo.
+O gerenciador de tarefas é uma ferramenta com funções bastante estratégicas para o desenvolvimento de tarefas pessoais, estabelecendo prioridades, deixando as relações, os compromissos mais transparentes e ajudando na obtenção da produtividade, sem estourar prazos ou perder algo por causa do esquecimento.
 
 ## Requisitos
 
@@ -84,6 +84,11 @@ PUT /api/tasks/{id}: Atualiza a tarefa especificada pelo ID. Requer title e desc
 DELETE /api/tasks/{id}: Exclui a tarefa especificada pelo ID.Este sistema foi desenvolvido para fornecer uma solução abrangente, integrando funcionalidades backend robustas com uma experiência de usuário fluida no frontend. A seguir, descrevemos como interagir com nossos principais endpoints e componentes React.Descrição dos principais endpoints, incluindo métodos HTTP, parâmetros esperados e formatos de resposta.
 
 As respostas são tipicamente retornadas em formato JSON, incluindo detalhes como o código de status HTTP e, para requisições bem-sucedidas, os dados solicitados ou uma mensagem de sucesso.
+
+**Autenticação**
+Utilizamos o JWT
+Para que serve o JWT?
+O JWT (JSON Web Token) é uma forma de autenticação que permite que um servidor verifique a identidade de um usuário sem precisar armazenar informações sobre ele. Ele é um padrão aberto para representar dados de forma compacta e segura entre as partes.
 
 ### Componentes do Frontend
 No frontend, utilizamos React para construir componentes interativos que se comunicam com o backend:
