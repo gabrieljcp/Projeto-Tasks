@@ -59,8 +59,8 @@ const RegisterPage = () => {
                   <br />
                   <button onClick={onButtonClick}>
                       Cadastrar
-                      <div class="arrow-wrapper">
-                          <div class="arrow"></div>
+                      <div className="arrow-wrapper">
+                          <div className="arrow"></div>
                       </div>
                   </button>
               </div>

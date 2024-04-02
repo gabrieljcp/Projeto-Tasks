@@ -20,14 +20,7 @@ const LoginPage = (props) => {
         const response = await auth.handleLogin({ email, password });
         if (response.token) {
           localStorage.setItem('token', response.token);
-          const email = response.email;
-          const containsAdmin = email.split('@')[1].startsWith('admin');  
-            if(containsAdmin) {
-              navigate('/tasks/admin');
-            } else {
-              navigate('/tasks');
-            }
-            navigate('/tasks');
+          navigate('/tasks');
         } else {
           setError(true);
         }

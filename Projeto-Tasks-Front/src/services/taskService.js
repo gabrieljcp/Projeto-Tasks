@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://77.37.40.46/api/';
+const API_URL = 'https://backend.pppix.app.br/api/';
 
 export const login = async (credentials) => {
   return axios.post(API_URL + 'loginAPI', credentials);
