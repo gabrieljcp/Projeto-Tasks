@@ -8,6 +8,7 @@ const RegisterPage = () => {
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
     const [password_confirmation, setPassword_confirmation] = useState('');
+    const [erro, setErro] = useState(false);
 
     const navigate = useNavigate();
   
@@ -18,9 +19,11 @@ const RegisterPage = () => {
           console.log('Registro bem-sucedido:', response.data);
           navigate('/tasks');
         } else {
+          setErro(true);
           console.error('Falha no registro');
         }
       } catch (error) {
+        setErro(true);
         console.error('Erro ao fazer registro:', error);
       }
     };
@@ -57,6 +60,7 @@ const RegisterPage = () => {
                       onChange={(e) => setPassword_confirmation(e.target.value)} 
                   />
                   <br />
+                  {erro && <p className="error-message">As informações fornecidas estão incorretas.</p>}
                   <button onClick={onButtonClick}>
                       Cadastrar
                       <div className="arrow-wrapper">
