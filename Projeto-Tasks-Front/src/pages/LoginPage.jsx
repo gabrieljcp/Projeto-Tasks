@@ -18,8 +18,15 @@ const LoginPage = (props) => {
       setIsLoading(true);
       try {
         const response = await auth.handleLogin({ email, password });
-        if (response && response.token) {
-            localStorage.setItem('token', response.token);
+        if (response.token) {
+          localStorage.setItem('token', response.token);
+          const email = response.email;
+          const containsAdmin = email.split('@')[1].startsWith('admin');  
+            if(containsAdmin) {
+              navigate('/tasks/admin');
+            } else {
+              navigate('/tasks');
+            }
             navigate('/tasks');
         } else {
           setError(true);
@@ -63,15 +70,15 @@ const LoginPage = (props) => {
                 <br />
                 <button onClick={handleLogin}>
                     Entrar
-                    <div class="arrow-wrapper">
-                        <div class="arrow"></div>
+                    <div className="arrow-wrapper">
+                        <div className="arrow"></div>
                     </div>
                 </button>
                 <br />
                 <button onClick={navigateToRegister}>
                     Cadastrar
-                    <div class="arrow-wrapper">
-                        <div class="arrow"></div>
+                    <div className="arrow-wrapper">
+                        <div className="arrow"></div>
                     </div>
                 </button>
             </div>

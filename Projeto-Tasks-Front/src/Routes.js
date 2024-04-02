@@ -5,6 +5,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import PrivateRoute from './components/PrivateRoute';
 import EditTaskPage from './pages/EditTaskPage';
+import AdminPage from './pages/AdminPage';
 
 function AppRoutes() {
   return (
@@ -15,6 +16,7 @@ function AppRoutes() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/tasks/editar" element={<PrivateRoute><EditTaskPage /></PrivateRoute>} />
+        <Route path="/tasks/admin" element={<PrivateRoute><AdminPage /></PrivateRoute>} />
       </Routes>
     </Router>
   );
