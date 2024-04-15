@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 import { deleteTasks, updateTasks} from "../services/taskService";
-import { useNavigate  } from 'react-router-dom';
-import LoadingIndicator from '../components/LoadingIndicator';
 
 const Card = ({ task, onTaskUpdate, handleShowMore, currentTask }) => {
 
   const [showMore, setShowMore] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
   const [editValues, setEditValues] = useState({
     title: task.title,
     description: task.description,
@@ -30,7 +27,7 @@ const Card = ({ task, onTaskUpdate, handleShowMore, currentTask }) => {
   const Delete = async (id) => {
     setIsLoading(true);
     try {
-        const response = await deleteTasks(id);
+        await deleteTasks(id);
         window.location.reload();
     } catch (error) {
       setError(error);

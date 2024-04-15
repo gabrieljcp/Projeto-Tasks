@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate  } from 'react-router-dom';
 import '../styles/TaskPage.css';
-import { getAllTasks, updateTasks} from "../services/taskService";
+import { getAllTasks} from "../services/taskService";
 import LoadingIndicator from '../components/LoadingIndicator';
 import Card from "../components/TasksCard";
 import AddCard from "../components/AddCard";
 import Header from "../components/Header";
 
-const TaskPage = (props) => {
+const TaskPage = () => {
   const [tasks, setTasks] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [activeTaskId, setActiveTaskId] = useState('');
   const [error, setError] = useState(null);
-  const [editingTask, setEditingTask] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {

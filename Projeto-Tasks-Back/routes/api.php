@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('jwt.auth')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 Route::post('/loginAPI', [LoginController::class, 'login']);
 Route::post('/registerAPI', [RegisterController::class, 'register']);
 

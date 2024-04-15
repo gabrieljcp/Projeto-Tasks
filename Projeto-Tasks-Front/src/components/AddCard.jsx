@@ -13,14 +13,10 @@ const AddCard = () => {
         task.criadopor = auth.user;
         
         try {
-            const response = await createTasks(task);
+            await createTasks(task);
             window.location.reload();
-
         } catch (error) {
-
-            if (error.response && error.response.status === 401) {
-
-            }
+            console.error('Ocorreu um erro ao criar a tarefa:', error);
         } finally {
             setIsEditing(false);
         }
